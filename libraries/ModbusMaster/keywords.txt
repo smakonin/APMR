@@ -1,0 +1,54 @@
+#######################################
+# Syntax Coloring Map For ModbusMaster
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+lowWord		KEYWORD2
+highWord	KEYWORD2
+LONG	KEYWORD2
+
+begin	KEYWORD2
+
+getResponseBuffer	KEYWORD2
+clearResponseBuffer	KEYWORD2
+setTransmitBuffer	KEYWORD2
+clearTransmitBuffer	KEYWORD2
+
+readCoils		KEYWORD2
+readDiscreteInputs	KEYWORD2
+readHoldingRegisters	KEYWORD2
+readInputRegisters	KEYWORD2
+writeSingleCoil		KEYWORD2
+writeSingleRegister	KEYWORD2
+writeMultipleCoils	KEYWORD2
+writeMultipleRegisters	KEYWORD2
+maskWriteRegister	KEYWORD2
+readWriteMultipleRegisters	KEYWORD2
+
+#######################################
+# Instances (KEYWORD2)
+#######################################
+
+Modbus	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+MBIllegalFunction	LITERAL1
+MBIllegalDataAddress	LITERAL1
+MBIllegalDataValue	LITERAL1
+MBSlaveDeviceFailure	LITERAL1
+
+MBSuccess	LITERAL1
+MBInvalidSlaveID		LITERAL1
+MBInvalidFunction	LITERAL1
+MBResponseTimedOut	LITERAL1
+MBInvalidCRC	LITERAL1
