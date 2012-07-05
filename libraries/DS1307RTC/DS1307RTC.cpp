@@ -53,33 +53,33 @@ void  DS1307RTC::set(time_t t)
 void DS1307RTC::read( tmElements_t &tm)
 {
   Wire.beginTransmission(DS1307_CTRL_ID);
-  Wire.send(0x00);
+  Wire.write(0x00);
   Wire.endTransmission();
 
   // request the 7 data fields   (secs, min, hr, dow, date, mth, yr)
   Wire.requestFrom(DS1307_CTRL_ID, tmNbrFields);
   
-  tm.Second = bcd2dec(Wire.receive() & 0x7f);   
-  tm.Minute = bcd2dec(Wire.receive() );
-  tm.Hour =   bcd2dec(Wire.receive() & 0x3f);  // mask assumes 24hr clock
-  tm.Wday = bcd2dec(Wire.receive() );
-  tm.Day = bcd2dec(Wire.receive() );
-  tm.Month = bcd2dec(Wire.receive() );
-  tm.Year = y2kYearToTm((bcd2dec(Wire.receive())));
+  tm.Second = bcd2dec(Wire.read() & 0x7f);   
+  tm.Minute = bcd2dec(Wire.read() );
+  tm.Hour =   bcd2dec(Wire.read() & 0x3f);  // mask assumes 24hr clock
+  tm.Wday = bcd2dec(Wire.read() );
+  tm.Day = bcd2dec(Wire.read() );
+  tm.Month = bcd2dec(Wire.read() );
+  tm.Year = y2kYearToTm((bcd2dec(Wire.read())));
 }
 
 void DS1307RTC::write(tmElements_t &tm)
 {
   Wire.beginTransmission(DS1307_CTRL_ID);
-  Wire.send(0x00); // reset register pointer
+  Wire.write(0x00); // reset register pointer
   
-  Wire.send(dec2bcd(tm.Second)) ;   
-  Wire.send(dec2bcd(tm.Minute));
-  Wire.send(dec2bcd(tm.Hour));      // sets 24 hour format
-  Wire.send(dec2bcd(tm.Wday));   
-  Wire.send(dec2bcd(tm.Day));
-  Wire.send(dec2bcd(tm.Month));
-  Wire.send(dec2bcd(tmYearToY2k(tm.Year)));   
+  Wire.write(dec2bcd(tm.Second)) ;   
+  Wire.write(dec2bcd(tm.Minute));
+  Wire.write(dec2bcd(tm.Hour));      // sets 24 hour format
+  Wire.write(dec2bcd(tm.Wday));   
+  Wire.write(dec2bcd(tm.Day));
+  Wire.write(dec2bcd(tm.Month));
+  Wire.write(dec2bcd(tmYearToY2k(tm.Year)));   
 
   Wire.endTransmission();  
 }

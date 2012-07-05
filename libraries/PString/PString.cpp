@@ -26,7 +26,7 @@ void PString::begin()
     _buf[0] = '\0';
 }
 
-void PString::write(uint8_t b)
+size_t PString::write(uint8_t b)
 {
   if (_cur + 1 < _buf + _size)
   {

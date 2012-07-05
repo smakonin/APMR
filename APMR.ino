@@ -14,9 +14,9 @@
 
 // Network settings
 byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0x5A };                // !!! Set the mac address of your Arduino
-byte ip[] = { 10, 0, 1, 91 };                                       // !!! Set the IP address of your Arduino
-byte gateway[] = { 10, 0, 1, 1 };                                   // !!! Set the LAN gateway
-byte subnet[] = { 255, 255, 255, 0 };                               // !!! Set the LAN subnet mask
+//byte ip[] = { 10, 0, 1, 91 };                                       // !!! Set the IP address of your Arduino
+//byte gateway[] = { 10, 0, 1, 1 };                                   // !!! Set the LAN gateway
+//byte subnet[] = { 255, 255, 255, 0 };                               // !!! Set the LAN subnet mask
 byte web_server[] = {69, 31, 166, 42 };                             // !!! Set the IP address of the remote web/DB server
 
 // Meter and webservice settings
@@ -38,18 +38,26 @@ char buffer1[buf1_size];
 int last_min = -1;
 
 // Global objects
-Server server(80);
-Client remote_server(web_server, 80);
+EthernetServer server(80);
+EthernetClient remote_server;
 PString json(buffer1, buf1_size);
 
 void setup() 
 {
-  // Setup the ehternet connection, and wait a bit
-  Ethernet.begin(mac, ip, gateway, subnet);
-  delay(1000);
-
   // Setup Arduino serial console for debug if needed
   Serial.begin(console_baud_rate);
+
+  // Setup the ehternet connection, and wait a bit
+  //Ethernet.begin(mac, ip, gateway, subnet);  
+  if(Ethernet.begin(mac) == 0)
+  {
+    Serial.println("Failed to configure Ethernet using DHCP");
+    // no point in carrying on, so do nothing forevermore:
+    while(true);    
+  }
+  Serial.print("APMR IP Address is ");
+  Serial.println(Ethernet.localIP());
+  delay(1000);
   
   // Setup the RTC interface 
   setSyncProvider(RTC.get);
@@ -156,7 +164,7 @@ void render_json()
 // Send the JSON text to the remote web/DB server
 void send_data()
 {
-  if(remote_server.connect()) 
+  if(remote_server.connect(web_server, 80)) 
   {
     remote_server.print("POST ");
     remote_server.print(ws_url);
@@ -187,7 +195,7 @@ void send_data()
 // Send JSON text to browser/computer that has made a request
 void handle_web_requests()
 {
-  Client client = server.available();
+  EthernetClient client = server.available();
   
   if(client) 
   {

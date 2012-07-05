@@ -21,7 +21,7 @@
 #ifndef ModbusMaster_h
 #define ModbusMaster_h
 
-#include "WProgram.h"
+#include "Arduino.h"
 #include <util/crc16.h>
 
 #define lowWord(ww) ((uint16_t) ((ww) & 0xFFFF))

@@ -31,7 +31,7 @@ class PString : public Print
 private:
   char *_buf, *_cur;
   size_t _size;
-  virtual void write(uint8_t);
+  virtual size_t write(uint8_t);
 
 public:
 

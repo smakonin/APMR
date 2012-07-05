@@ -520,7 +520,7 @@ uint8_t ModbusMaster::ModbusMasterTransaction(uint8_t MBSlave, uint8_t MBFunctio
 	// transmit request
 	for (i = 0; i < ModbusADUSize; i++)
 	{
-		MBSerial.print(ModbusADU[i], BYTE);
+		MBSerial.write(ModbusADU[i]);
 	}
 	
 	ModbusADUSize = 0;
