@@ -25,10 +25,10 @@ const char* ws_url = "/restful/datalog/push/meters.py";             // !!! Set t
 const char* ws_host = "makonin.com";                                // !!! Set the URL host name of the  remote server web service
 const int console_baud_rate = 19200;                                // !!! Set the Arduino serial console baud rate
 const int rs485_baud_rate = 19200;                                  // !!! Set the RS485/MODBUS baud rate
-const int meter_count = 2;                                          // !!! Set the number of meters there are to read
-int   meter_id[meter_count]   = {101, 102};                         // !!! Add the MODBUS ID for each meter to be read
-char* meter_descr[meter_count] = {"MHE", "HPE"};                    // !!! Add the DEVICE ID for each meter (used by the remote server web service)
-char*  meter_model[meter_count] = {"ION6200", "ION6200"};           // !!! Add the MODEL ID for each meter to be read (used in control loop of update_data())
+const int meter_count = 1;                                          // !!! Set the number of meters there are to read
+int   meter_id[meter_count]   = {101};//, 102};                         // !!! Add the MODBUS ID for each meter to be read
+char* meter_descr[meter_count] = {"TST"};//, "HPE"};                    // !!! Add the DEVICE ID for each meter (used by the remote server web service)
+char*  meter_model[meter_count] = {"ION6200"};//, "ION6200"};           // !!! Add the MODEL ID for each meter to be read (used in control loop of update_data())
 float reading_wh[meter_count];
 float reading_w[meter_count];
 
@@ -36,6 +36,7 @@ float reading_w[meter_count];
 const int buf1_size = 150 * (meter_count + 1) + 1;
 char buffer1[buf1_size];
 int last_min = -1;
+int last_sec = -1;
 
 // Global objects
 EthernetServer server(80);
@@ -72,20 +73,23 @@ void setup()
 void loop() 
 {
   int cur_min = minute();
+  int cur_sec = second();
   
   // Every minute on the 0 second, read the meters
-  if(!second() && cur_min != last_min)
+  //if(!second() && cur_min != last_min)
+  if(cur_sec != last_sec)
   {
     update_data();
     render_json();
-    send_data();
+    //send_data();
     last_min = cur_min;
-    
-    //Serial.println(json);
+    last_sec = cur_sec;
+
+    Serial.println(json);
   }
 
   // Did anyone make a web request? 
-  handle_web_requests();
+  //handle_web_requests();
 
   // Added to pause processing from hard-spin
   delay(100);
@@ -108,9 +112,9 @@ void update_data()
       if(result == (int)Modbus.MBSuccess)
       {
         // NOTE: the 0.001 will need to change depending on how your meter's CT and PT ratios are set up
-        reading_w[i] = (int)Modbus.getResponseBuffer(0) * 0.0001;
-        reading_wh[i] = LONG((long)Modbus.getResponseBuffer(19), (long)Modbus.getResponseBuffer(18))  * 0.001 -
-                         LONG((long)Modbus.getResponseBuffer(21), (long)Modbus.getResponseBuffer(20)) * 0.001;
+        reading_w[i] = (int)Modbus.getResponseBuffer(0) * 0.1; //* 0.0001;
+        reading_wh[i] = LONG((long)Modbus.getResponseBuffer(19), (long)Modbus.getResponseBuffer(18))  - //* 0.001 -
+                         LONG((long)Modbus.getResponseBuffer(21), (long)Modbus.getResponseBuffer(20)); // * 0.001;
       }
     }
     //else if(!strcmp(meter_model[i], "???????"))
@@ -124,22 +128,22 @@ void update_data()
 void render_json()
 {
   json.begin();
-  json.print("{\"consumption\": {\r\n");
-  json.print("\t\"home\": \"");
-  json.print(home_id);
-  json.print("\",\r\n");
-  json.print("\t\"at_ts\": \"");
-  json.print(year());
-  json.print("-");
-  json.print(month());
-  json.print("-");
-  json.print(day());
-  json.print(" ");
-  json.print(hour());
-  json.print(":");
-  json.print(minute());
-  json.print(":00\",\r\n");
-  json.print("\t\"meters\": [\r\n");
+//  json.print("{\"consumption\": {\r\n");
+//  json.print("\t\"home\": \"");
+//  json.print(home_id);
+//  json.print("\",\r\n");
+//  json.print("\t\"at_ts\": \"");
+//  json.print(year());
+//  json.print("-");
+//  json.print(month());
+//  json.print("-");
+//  json.print(day());
+//  json.print(" ");
+//  json.print(hour());
+//  json.print(":");
+//  json.print(minute());
+//  json.print(":00\",\r\n");
+//  json.print("\t\"meters\": [\r\n");
 
   for(int i = 0; i < meter_count; i++)
   {
@@ -158,7 +162,7 @@ void render_json()
       json.print("},\r\n");
   }
 
-  json.print("\t\t]\r\n\t}\r\n}\r\n");
+//  json.print("\t\t]\r\n\t}\r\n}\r\n");
 }
 
 // Send the JSON text to the remote web/DB server
