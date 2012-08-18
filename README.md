@@ -15,25 +15,25 @@ We are currently working on Version 2.0 which will include some great features (
 
 Project Team
 ------------
-** Project Leader(s): **
+**Project Leader(s):**
 * Stephen Makonin
 
-** Student Contributors: **
+**Student Contributors:**
 * TaeJin Moon (Summer 2012)
 
 Releases History
 ----------------
-** Version 2.0 (TBA: Not Yet Released) **
+**Version 2.0 (TBA: Not Yet Released)**
 * Added feature to log readings it SD card
 * Added feature to save setting to EEPROM using
 * Modified JSON format and accompany web service
 * Perform load testing
 
-** Version 1.1 (July 5, 2012) **
+**Version 1.1 (July 5, 2012)**
 * Modified code to work with Arduino 1.0.1
 * Added support for DHCP
 
-** Version 1.0 (October 25, 2011) **
+**Version 1.0 (October 25, 2011)**
 * initial release
 
 
