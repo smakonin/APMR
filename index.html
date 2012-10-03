@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>APMR by smakonin</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>APMR</h1>
+        <p>Arduino Power Meter Reader</p>
+
+        <p class="view"><a href="https://github.com/smakonin/APMR">View the Project on GitHub <small>smakonin/APMR</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/smakonin/APMR/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/smakonin/APMR/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/smakonin/APMR">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h2>Introduction</h2>
+
+<p>Arduino Power Meter Reader (APMR) is an open source hardware and software project. APMR reads the power (W) and energy (Wh) readings of RS485/Modbus communicating power meters at a constant interval. Readings are recorded on an SD cards and/or sent over the Internet using a HTTP RESTful web service.</p>
+
+<p>We are currently working on Version 2.0 which will include some great features (listed in the Release History section). </p>
+
+<p>Stay tuned.</p>
+
+<h2>The Hardware</h2>
+
+<p>APMR used an <a href="http://arduino.cc/en/Main/ArduinoBoardMega2560">Arduino Mega 2560</a> with two custom shields: the RTC (real-time clock) Shield and the RS485 Shield. </p>
+
+<p><img src="https://raw.github.com/smakonin/APMR/master/resources/apmr_hardware.png" alt="Arduino Power Meter Reader" title="Arduino Power Meter Reader"></p>
+
+<p>Each custom shield can be create using a <a href="http://arduino.cc/en/Main/ArduinoProtoShield">Arduino Proto Shield</a> and the following schematics: </p>
+
+<ul>
+<li>
+<a href="https://raw.github.com/smakonin/APMR/master/resources/rtc-module-schematic.pdf">The RTC Shield schematic</a> <em>Based on the <a href="http://www.sparkfun.com/products/99">SparkFun Real Time Clock Module</a>.</em> <img src="https://raw.github.com/smakonin/APMR/master/resources/rtc_shield.png" alt="The RTC Shield" title="The RTC Shield">
+</li>
+<li>
+<a href="https://raw.github.com/smakonin/APMR/master/resources/rs485_shield_schematic.pdf">The RS485 Shield schematic</a> <img src="https://raw.github.com/smakonin/APMR/master/resources/rs485_shield.png" alt="The RS485 Shield" title="The RS485 Shield">
+</li>
+</ul><h2>Project Team</h2>
+
+<p><strong>Project Leader(s):</strong></p>
+
+<ul>
+<li>Stephen Makonin</li>
+</ul><p><strong>Student Contributors:</strong></p>
+
+<ul>
+<li>TaeJin Moon (Summer 2012)</li>
+</ul><h2>License and Legal</h2>
+
+<p>Copyright (C) 2010-2012 Stephen Makonin and contributors. All rights reserved.</p>
+
+<p>This project is here by released under the COMMON DEVELOPMENT AND DISTRIBUTION LICENSE (CDDL).</p>
+
+<h2>Releases History</h2>
+
+<p><strong>Version 2.0 (TBA: Not Yet Released)</strong></p>
+
+<ul>
+<li>Added feature to log readings to SD card</li>
+<li>Added feature to save setting/config to EEPROM using browser</li>
+<li>Modified JSON format and accompany web service</li>
+<li>Perform load testing on hardware</li>
+</ul><p><strong>Version 1.1 (July 5, 2012)</strong></p>
+
+<ul>
+<li>Modified code to work with Arduino 1.0.1</li>
+<li>Added support for DHCP</li>
+</ul><p><strong>Version 1.0 (October 25, 2011)</strong></p>
+
+<ul>
+<li>initial release</li>
+</ul>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/smakonin">smakonin</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
