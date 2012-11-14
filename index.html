@@ -32,9 +32,14 @@
 
 <p>Arduino Power Meter Reader (APMR) is an open source hardware and software project. APMR reads the power (W) and energy (Wh) readings of RS485/Modbus communicating power meters at a constant interval. Readings are recorded on an SD card and/or sent over the Internet using a HTTP RESTful web service.</p>
 
-<p>We are currently working on Version 2.0 which will include some great features (listed in the Release History section). </p>
+<p>Version 2.0 is now released. See the Release History section to review what has changed. Yoou can now modify settings and view files from your browser. Here are the URLs:</p>
 
-<p>Stay tuned.</p>
+<ul>
+<li><pre>http//<your.ip.address>/        </pre> - view the current readings.</li>
+<li><pre>http//<your.ip.address>/settings</pre> - view/modify settings.</li>
+<li><pre>http//<your.ip.address>/unsent  </pre> - view the unsent readings file.</li>
+<li><pre>http//<your.ip.address>/files   </pre> - view SD card information and files on the SD card.</li>
+</ul>
 
 <h2>The Hardware</h2>
 
@@ -67,15 +72,16 @@
 
 <p>This project is here by released under the COMMON DEVELOPMENT AND DISTRIBUTION LICENSE (CDDL).</p>
 
-<h2>Releases History</h2>
+<h2>Release History</h2>
 
-<p><strong>Version 2.0 (TBA: Not Yet Released)</strong></p>
+<p><strong>Version 2.0 (November 13, 2012)</strong></p>
 
 <ul>
 <li>Added feature to log readings to SD card</li>
 <li>Added feature to save setting/config to EEPROM using browser</li>
 <li>Modified JSON format and accompany web service</li>
 <li>Perform load testing on hardware</li>
+<li>Sense when network down, when up send all unsent readings</li>
 </ul><p><strong>Version 1.1 (July 5, 2012)</strong></p>
 
 <ul>
