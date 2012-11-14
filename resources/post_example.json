@@ -1,0 +1,4 @@
+{"metering": {"home": "TEST", "readings": [
+{"meter": "TEST", "ts": "2012-11-13 00:10:05 UTC", "power": 1.60, "energy": 917.00, },
+] } }
+
