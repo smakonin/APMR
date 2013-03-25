@@ -32,7 +32,7 @@
 
 <p>Arduino Power Meter Reader (APMR) is an open source hardware and software project. APMR reads the power (W) and energy (Wh) readings of RS485/Modbus communicating power meters at a constant interval. Readings are recorded on an SD card and/or sent over the Internet using a HTTP RESTful web service.</p>
 
-<p>Version 2.0 is now released. See the Release History section to review what has changed. Yoou can now modify settings and view files from your browser. Here are the URLs:</p>
+<p><b>Version 2.5 is now released.</b> See the Release History section to review what has changed. Since Version 2.0 was released you can now modify settings and view files from your browser. Here are the URLs:</p>
 
 <pre>
 <b>http://&lt;ip.address&gt;/        </b> - view the current readings.</li>
@@ -56,42 +56,64 @@
 <li>
 <a href="https://raw.github.com/smakonin/APMR/master/resources/rs485_shield_schematic.pdf">The RS485 Shield schematic</a> <img src="https://raw.github.com/smakonin/APMR/master/resources/rs485_shield.png" alt="The RS485 Shield" title="The RS485 Shield">
 </li>
-</ul><h2>Project Team</h2>
+</ul>
+
+<h2>The In-Home Display</h2>
+In Version 2.5 we have added an in-house display (IHD) prototype that works with APMR to noticy you how your musch energy you are consuming relitive to you past consumption. The IHD uses 3 colour LEDs (green, yellow, and red) as ambient indicators.
+
+<p><img src="https://raw.github.com/smakonin/APMR/master/IHD/ihd_device.png" alt="The APMR In-Home Display" title="The APMR In-Home Display"></p>
+
+<h2>Project Team</h2>
 
 <p><strong>Project Leader(s):</strong></p>
-
 <ul>
 <li>Stephen Makonin</li>
 </ul><p><strong>Student Contributors:</strong></p>
-
 <ul>
 <li>TaeJin Moon (Summer and Fall 2012)</li>
 </ul><h2>License and Legal</h2>
 
 <p>Copyright (C) 2010-2012 Stephen Makonin and contributors. All rights reserved.</p>
-
 <p>This project is here by released under the COMMON DEVELOPMENT AND DISTRIBUTION LICENSE (CDDL).</p>
+
+<h2>Sponsorship</h2>
+
+<p>This work was supported in part by a grant from the follwing:</p>
+<span style="width: 100%; display: inline-block; text-align: center; margin-top: 1em;">
+<a href="http://grand-nce.ca"><img src="sponsors/grand-nce.png" style="width: 183px; vertical-align: middle; display: float;" alt="GRAND-NCE: Graphics, Animation and New Media Network of Centres of Excellence of Canada"></a>
+&nbsp;&nbsp;&nbsp;
+<a href="http://www.nserc-crsng.gc.ca"><img src="sponsors/nserc.png" style="width: 183px; vertical-align: middle; display: float;" alt="NSERC: National Sciences and Engineering Research Council of Canada"></a>
+</span>
+<p></p>
 
 <h2>Release History</h2>
 
-<p><strong>Version 2.0 (November 13, 2012)</strong></p>
+<p><strong>Version 2.5 (December 17, 2012)</strong></p>
+<ul>
+<li>Added database scheme and webservice example (the_cloud)</li>
+<li>Added file for IHD build using Electric Imp</li>
+</ul>
 
+<p><strong>Version 2.0 (November 13, 2012)</strong></p>
 <ul>
 <li>Added feature to log readings to SD card</li>
 <li>Added feature to save setting/config to EEPROM using browser</li>
 <li>Modified JSON format and accompany web service</li>
 <li>Perform load testing on hardware</li>
 <li>Sense when network down, when up send all unsent readings</li>
-</ul><p><strong>Version 1.1 (July 5, 2012)</strong></p>
+</ul>
 
+<p><strong>Version 1.1 (July 5, 2012)</strong></p>
 <ul>
 <li>Modified code to work with Arduino 1.0.1</li>
 <li>Added support for DHCP</li>
-</ul><p><strong>Version 1.0 (October 25, 2011)</strong></p>
+</ul>
 
+<p><strong>Version 1.0 (October 25, 2011)</strong></p>
 <ul>
 <li>initial release</li>
 </ul>
+
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/smakonin">smakonin</a></p>
